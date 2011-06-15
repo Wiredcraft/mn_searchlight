@@ -8,7 +8,7 @@ function mn_searchlight_searchlight_default_datasources() {
   $searchlight_datasource = new SearchlightDatasource;
   $searchlight_datasource->disabled = FALSE; /* Edit this to true to make a default searchlight_datasource disabled initially */
   $searchlight_datasource->api_version = 1;
-  $searchlight_datasource->name = 'mn_searchlight_syndication';
+  $searchlight_datasource->name = 'mn_searchlight_sync';
   $searchlight_datasource->base_table = 'feeds_data_syndication';
   $searchlight_datasource->fields = array(
     'feeds_data_syndication_title' => array(
@@ -78,6 +78,6 @@ function mn_searchlight_searchlight_default_datasources() {
     'node_access' => TRUE,
   );
 
-  $export['mn_searchlight_syndication'] = $searchlight_datasource;
+  $export['mn_searchlight_sync'] = $searchlight_datasource;
   return $export;
 }

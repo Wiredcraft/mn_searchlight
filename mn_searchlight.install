@@ -7,6 +7,6 @@
  * enabled.
  */
 function mn_searchlight_enable() {
-  $datasource = searchlight_datasource_load('mn_searchlight_syndication');
+  $datasource = searchlight_datasource_load('mn_searchlight_sync');
   searchlight_invalidate_index($datasource->base_table);
 }

@@ -107,9 +107,9 @@ function mn_searchlight_context_default_contexts_alter($items) {
   if (isset($items['mn-section-search'])) {
     unset($items['mn-section-search']->reactions['block']['blocks']['views-mn_search_saved-block_2']);
     unset($items['mn-section-search']->reactions['block']['blocks']['stored_views-save']);
-    $items['mn-section-search']->reactions['block']['blocks']['searchlight-facets_mn_searchlight_syndication'] = array(
+    $items['mn-section-search']->reactions['block']['blocks']['searchlight-facets_mn_searchlight_sync'] = array(
       'module' => 'searchlight',
-      'delta' => 'facets_mn_searchlight_syndication',
+      'delta' => 'facets_mn_searchlight_sync',
       'region' => 'left',
       'weight' => 0,
     );
@@ -124,7 +124,7 @@ function mn_searchlight_block($op = 'list', $delta = null) {
     return $blocks;
   }
   elseif ($op == 'view' && user_access('administer mn')) {
-    if ($env = searchlight_environment_load('mn_searchlight_syndication')) {
+    if ($env = searchlight_environment_load('mn_searchlight_sync')) {
       $result = db_query("SELECT count(id) AS count, status
         FROM {searchlight_search} WHERE type = '%s'
         GROUP BY status", $env->datasource->base_table);
@@ -183,7 +183,7 @@ function mn_searchlight_term_ajax_save($callback) {
 
 // Implementation of hook_theme_registry_alter
 function mn_searchlight_theme_registry_alter($items) {
-  // We need to move our preprocess to the end of the line so that it's 
+  // We need to move our preprocess to the end of the line so that it's
   // blown away.
   $pos = array_search('mn_searchlight_preprocess_block', $items['block']['preprocess functions']);
   unset($items['block']['preprocess functions'][$pos]);

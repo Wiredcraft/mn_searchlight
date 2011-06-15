@@ -8,7 +8,7 @@ function mn_searchlight_searchlight_default_environments() {
   $searchlight_environment = new SearchlightEnvironment;
   $searchlight_environment->disabled = FALSE; /* Edit this to true to make a default searchlight_environment disabled initially */
   $searchlight_environment->api_version = 1;
-  $searchlight_environment->name = 'mn_searchlight_syndication';
+  $searchlight_environment->name = 'mn_searchlight_sync';
   $searchlight_environment->view_display = 'mn_news:page_2';
   $searchlight_environment->facets = array(
     'feeds_data_syndication_timestamp' => array(
@@ -45,6 +45,6 @@ function mn_searchlight_searchlight_default_environments() {
     'facets_label' => 'Search filter',
   );
 
-  $export['mn_searchlight_syndication'] = $searchlight_environment;
+  $export['mn_searchlight_sync'] = $searchlight_environment;
   return $export;
 }
